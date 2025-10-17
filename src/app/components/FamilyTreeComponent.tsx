@@ -15,6 +15,7 @@ const FamilyTreeComponent = ({ width = '100%', height = '100vh' }: FamilyTreeCom
     if (!treeContainerRef.current) return;
 
     const familyTree = new FamilyTree(treeContainerRef.current, {
+
       nodeBinding: {
         field_0: 'name',
         field_1: 'born',
@@ -84,12 +85,37 @@ const FamilyTreeComponent = ({ width = '100%', height = '100vh' }: FamilyTreeCom
           img: 'https://cdn.balkan.app/shared/m10/3.jpg'
         },
       ],
-      enableSearch: true,
+      enableSearch: false,
       mouseScrool: FamilyTree.action.zoom,
       mode: 'light',
-      template: 'john',
+      // template: 'john',
     });
 
+/*
+    familyTree.load([
+      { id: 2, pids: [3], gender: 'female', relation: "grandmother" },
+      { id: 3, pids: [2], gender: 'male', relation: "grandfather" },
+      { id: 4, pids: [5], gender: 'male', fid: 3, mid: 2, relation: "father" },
+      { id: 5, pids: [4], gender: 'female', fid: 21, mid: 22, relation: "mother" },
+      { id: 6, pids: [10, 11, 12, 13], gender: 'male', fid: 4, mid: 5, relation: "son" },
+      { id: 7, gender: 'female', fid: 4, mid: 5, relation: "daughter" },
+      { id: 8, gender: 'male', fid: 4, mid: 5, relation: "son" },
+      { id: 9, gender: 'male', fid: 4, mid: 5, relation: "son"},
+      { id: 10, pids: [6], gender: 'female', relation: "wife" },
+      { id: 11, pids: [6], gender: 'female', relation: "wife" },
+      { id: 12, pids: [6], gender: 'female', relation: "wife" },
+      { id: 13, pids: [6], gender: 'female', relation: "wife" },
+      { id: 14, gender: 'female', fid: 6, mid: 13, relation: "child" },
+      { id: 15, gender: 'male', fid: 6, mid: 13, relation: "child" },
+      { id: 16, gender: 'female', fid: 6, mid: 13, relation: "child" },
+      { id: 17, gender: 'male', fid: 6, mid: 13, relation: "child" },
+      { id: 18, gender: 'female', fid: 6, mid: 12, relation: "child" },
+      { id: 19, pids: [20], gender: 'male', relation: "grand grandfather" },
+      { id: 20, pids: [19], gender: 'female', relation: "grand grandmother" },
+      { id: 21, pids: [22], gender: 'male', fid: 19, mid: 20, relation: "grandfather" },
+      { id: 22, pids: [21], gender: 'female', relation: "grandmother" }
+    ]);
+*/
     // Cleanup function
     return () => {
       // The library doesn't have a built-in destroy method,
