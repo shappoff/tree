@@ -25,14 +25,14 @@ const FamilyTreeComponent = ({ width = '100%', height = '100vh' }: FamilyTreeCom
         {
           id: 1,
           pids: [2],
-          name: 'John Smith',
+          name: 'Иван Смирнов',
           born: '1940-05-15',
           img: 'https://cdn.balkan.app/shared/m30/1.jpg'
         },
         {
           id: 2,
           pids: [1],
-          name: 'Mary Smith',
+          name: 'Мария Смирнова',
           born: '1942-08-20',
           img: 'https://cdn.balkan.app/shared/w30/1.jpg'
         },
@@ -41,14 +41,14 @@ const FamilyTreeComponent = ({ width = '100%', height = '100vh' }: FamilyTreeCom
           mid: 2,
           fid: 1,
           pids: [4],
-          name: 'Robert Smith',
+          name: 'Роберт Смирнов',
           born: '1965-03-10',
           img: 'https://cdn.balkan.app/shared/m10/1.jpg'
         },
         {
           id: 4,
           pids: [3],
-          name: 'Jennifer Smith',
+          name: 'Дженнифер Смирнова',
           born: '1967-11-25',
           img: 'https://cdn.balkan.app/shared/w10/1.jpg'
         },
@@ -56,7 +56,7 @@ const FamilyTreeComponent = ({ width = '100%', height = '100vh' }: FamilyTreeCom
           id: 5,
           mid: 2,
           fid: 1,
-          name: 'Sarah Johnson',
+          name: 'Сара Джонсон',
           born: '1968-07-14',
           img: 'https://cdn.balkan.app/shared/w10/2.jpg'
         },
@@ -64,7 +64,7 @@ const FamilyTreeComponent = ({ width = '100%', height = '100vh' }: FamilyTreeCom
           id: 6,
           mid: 4,
           fid: 3,
-          name: 'Emily Smith',
+          name: 'Эмили Смирнова',
           born: '1990-01-05',
           img: 'https://cdn.balkan.app/shared/w10/3.jpg'
         },
@@ -72,7 +72,7 @@ const FamilyTreeComponent = ({ width = '100%', height = '100vh' }: FamilyTreeCom
           id: 7,
           mid: 4,
           fid: 3,
-          name: 'Michael Smith',
+          name: 'Михаил Смирнов',
           born: '1992-06-18',
           img: 'https://cdn.balkan.app/shared/m10/2.jpg'
         },
@@ -80,7 +80,7 @@ const FamilyTreeComponent = ({ width = '100%', height = '100vh' }: FamilyTreeCom
           id: 8,
           mid: 4,
           fid: 3,
-          name: 'David Smith',
+          name: 'Давид Смирнов',
           born: '1995-12-22',
           img: 'https://cdn.balkan.app/shared/m10/3.jpg'
         },
