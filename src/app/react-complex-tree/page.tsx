@@ -1,7 +1,8 @@
 'use client';
 
 import { useState, useCallback } from 'react';
-import Link from 'next/link';
+import DemoPage from '@/components/DemoPage';
+import { getDemoById } from '@/data/demos';
 import {
   ControlledTreeEnvironment,
   Tree,
@@ -150,6 +151,8 @@ const familyTreeItems: Record<TreeItemIndex, TreeItem<FamilyMemberData>> = {
   },
 };
 
+const demo = getDemoById('react-complex-tree')!;
+
 const ReactComplexTreePage = () => {
   const [items, setItems] = useState(familyTreeItems);
   const [focusedItem, setFocusedItem] = useState<TreeItemIndex>();
@@ -206,27 +209,8 @@ const ReactComplexTreePage = () => {
   }, []);
 
   return (
-    <div className="family-tree-page">
-      <div className="controls">
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
-          <h1 style={{ margin: 0 }}>Генеалогическое Дерево - Пример React Complex Tree</h1>
-          <Link 
-            href="/" 
-            style={{ 
-              color: '#0070f3', 
-              textDecoration: 'none',
-              fontWeight: '600',
-              padding: '8px 16px',
-              border: '1px solid #0070f3',
-              borderRadius: '4px',
-              background: 'white'
-            }}
-          >
-            ← Назад на Главную
-          </Link>
-        </div>
-      </div>
-
+    <DemoPage demo={demo}>
+      <div className="family-tree-page" style={{ height: '100%' }}>
       <div className="tree-container">
         <div style={{ width: '100%', height: '80vh', border: '1px solid #e0e0e0' }}>
           <ControlledTreeEnvironment<FamilyMemberData>
@@ -274,22 +258,8 @@ const ReactComplexTreePage = () => {
         </div>
       </div>
 
-      <div className="info-section">
-        <h3>О React Complex Tree</h3>
-        <p>
-          Этот пример использует пакет <strong>react-complex-tree</strong>, который предоставляет богатый функциями
-          компонент дерева с расширенными возможностями включая поиск, переименование, выделение и навигацию с клавиатуры.
-        </p>
-        <ul>
-          <li>Полная поддержка навигации с клавиатуры</li>
-          <li>Функциональность поиска</li>
-          <li>Переименование на месте</li>
-          <li>Поддержка множественного выделения</li>
-          <li>Настраиваемый рендеринг элементов</li>
-          <li>Функции доступности</li>
-        </ul>
       </div>
-    </div>
+    </DemoPage>
   );
 };
 

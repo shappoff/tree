@@ -1,88 +1,124 @@
 import Link from 'next/link';
-import styles from "./page.module.css";
+import { demos } from '@/data/demos';
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <main style={{ 
-      width: '100%', 
-      height: '100vh', 
-      padding: '40px', 
-      margin: 0, 
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-      color: 'white'
-    }}>
-      <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-        <h1 style={{ fontSize: '3rem', marginBottom: '20px', fontWeight: '700' }}>
-          Примеры Генеалогических Деревьев
-        </h1>
-        <p style={{ fontSize: '1.2rem', opacity: 0.9, maxWidth: '600px' }}>
-          Изучите различные реализации генеалогических деревьев с использованием различных библиотек и фреймворков
+    <>
+      <section className="home-hero">
+        <h2>Генеалогические деревья: обзор решений</h2>
+        <p>
+          Интерактивная презентация популярных библиотек для визуализации семейных деревьев.
+          Каждый пример — отдельный маршрут с одними и теми же демо-данными (семья Петровых).
+          Проект разворачивается на GitHub Pages через GitHub Actions.
         </p>
+      </section>
+
+      <div className="cards-grid">
+        {demos.map((demo) => (
+          <Link key={demo.id} href={demo.path} className="demo-card">
+            <h3>{demo.name}</h3>
+            <p>{demo.description}</p>
+          </Link>
+        ))}
       </div>
 
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-        gap: '24px',
-        width: '100%',
-        maxWidth: '900px'
-      }}>
-        <Link 
-          href="/balkangraph" 
-          className={styles.navCard}
-        >
-          <div style={{ fontSize: '2rem', marginBottom: '12px' }}>🌳</div>
-          <h3 style={{ fontSize: '1.5rem', marginBottom: '8px', color: '#2563eb' }}>
-            Генеалогическое Дерево BalkanGraph
-          </h3>
-          <p style={{ color: '#666', lineHeight: '1.5' }}>
-            Профессиональное генеалогическое дерево с расширенными возможностями используя @balkangraph/familytree.js
-          </p>
-        </Link>
-
-        <Link 
-          href="/react-d3-tree" 
-          className={styles.navCard}
-        >
-          <div style={{ fontSize: '2rem', marginBottom: '12px' }}>📊</div>
-          <h3 style={{ fontSize: '1.5rem', marginBottom: '8px', color: '#0070f3' }}>
-            React D3 Tree
-          </h3>
-          <p style={{ color: '#666', lineHeight: '1.5' }}>
-            Интерактивная визуализация дерева с использованием библиотеки React D3 Tree с D3.js
-          </p>
-        </Link>
-
-        <Link 
-          href="/react-family-tree" 
-          className={styles.navCard}
-        >
-          <div style={{ fontSize: '2rem', marginBottom: '12px' }}>👨‍👩‍👧‍👦</div>
-          <h3 style={{ fontSize: '1.5rem', marginBottom: '8px', color: '#28a745' }}>
-            React Family Tree
-          </h3>
-          <p style={{ color: '#666', lineHeight: '1.5' }}>
-            Чистый и простой компонент генеалогического дерева, созданный на React
-          </p>
-        </Link>
-
-        <Link 
-          href="/react-complex-tree" 
-          className={styles.navCard}
-        >
-          <div style={{ fontSize: '2rem', marginBottom: '12px' }}>🌲</div>
-          <h3 style={{ fontSize: '1.5rem', marginBottom: '8px', color: '#6f42c1' }}>
-            React Complex Tree
-          </h3>
-          <p style={{ color: '#666', lineHeight: '1.5' }}>
-            Продвинутый компонент дерева с функциями перетаскивания, поиска и редактирования
-          </p>
-        </Link>
-      </div>
-    </main>
+      <table className="comparison-table">
+        <thead>
+          <tr>
+            <th>Библиотека</th>
+            <th>Язык</th>
+            <th>Лицензия</th>
+            <th>Модель данных</th>
+            <th>Лучше для</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Family Chart</td>
+            <td>JS / D3</td>
+            <td>MIT</td>
+            <td>rels: parents, spouses, children</td>
+            <td>Интерактивные деревья с карточками</td>
+          </tr>
+          <tr>
+            <td>dTree</td>
+            <td>JS / D3</td>
+            <td>MIT</td>
+            <td>marriages → children</td>
+            <td>Классические pedigree-деревья</td>
+          </tr>
+          <tr>
+            <td>Topola</td>
+            <td>TS / D3</td>
+            <td>Apache-2.0</td>
+            <td>GEDCOM / JSON</td>
+            <td>Импорт из генеалогических программ</td>
+          </tr>
+          <tr>
+            <td>famtreejs</td>
+            <td>React</td>
+            <td>MIT</td>
+            <td>people + partnerships</td>
+            <td>React-приложения, союзы как сущности</td>
+          </tr>
+          <tr>
+            <td>react-d3-tree</td>
+            <td>React / D3</td>
+            <td>MIT</td>
+            <td>Иерархия parent → child</td>
+            <td>Простые линии предков/потомков</td>
+          </tr>
+          <tr>
+            <td>react-family-tree</td>
+            <td>React</td>
+            <td>MIT</td>
+            <td>rels: parents, spouses, siblings</td>
+            <td>Семейные связи с выбором корня</td>
+          </tr>
+          <tr>
+            <td>react-complex-tree</td>
+            <td>React</td>
+            <td>MIT</td>
+            <td>Древовидный список</td>
+            <td>Навигация, поиск, редактирование</td>
+          </tr>
+          <tr>
+            <td>React Flow</td>
+            <td>React</td>
+            <td>MIT</td>
+            <td>nodes + edges</td>
+            <td>Кастомные UI и сложная логика</td>
+          </tr>
+          <tr>
+            <td>vis-network</td>
+            <td>JS</td>
+            <td>Apache/MIT</td>
+            <td>Graph nodes + edges</td>
+            <td>Сетевые диаграммы связей</td>
+          </tr>
+          <tr>
+            <td>Cytoscape.js</td>
+            <td>JS</td>
+            <td>MIT</td>
+            <td>Graph elements</td>
+            <td>Анализ и большие графы</td>
+          </tr>
+          <tr>
+            <td>D3 (кастом)</td>
+            <td>JS / D3</td>
+            <td>ISC</td>
+            <td>Любая</td>
+            <td>Полный контроль, клинические pedigrees</td>
+          </tr>
+          <tr>
+            <td>BALKAN FamilyTree</td>
+            <td>JS</td>
+            <td>Коммерческая</td>
+            <td>id, pids, mid, fid</td>
+            <td>Enterprise-ready UI из коробки</td>
+          </tr>
+        </tbody>
+      </table>
+    </>
   );
 }

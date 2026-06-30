@@ -1,8 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
 import ReactFamilyTree from 'react-family-tree';
+import DemoPage from '@/components/DemoPage';
+import { getDemoById } from '@/data/demos';
 import { Node, ExtNode, Gender, RelType } from 'relatives-tree/lib/types';
 
 import './family-tree.css';
@@ -221,22 +222,15 @@ const FamilyNode = ({ node, style }: { node: ExtNode; style: React.CSSProperties
 const REACT_FAMILY_TREE_WIDTH = 200;
 const REACT_FAMILY_TREE_HEIGHT = 100;
 
+const demo = getDemoById('react-family-tree')!;
+
 const ReactFamilyTreePage = () => {
   const [rootId, setRootId] = useState('john');
 
   return (
-    <div className="family-tree-page">
-      <div className="controls">
-        <div className="header-section">
-          <h1>Пример React Family Tree</h1>
-          <Link 
-            href="/" 
-            className="back-link"
-          >
-            ← Назад на Главную
-          </Link>
-        </div>
-        
+    <DemoPage demo={demo}>
+      <div className="family-tree-page" style={{ height: '100%' }}>
+        <div className="controls">
         <div className="control-group">
           <label htmlFor="root-select">Корневой Человек:</label>
           <select
@@ -296,21 +290,8 @@ const ReactFamilyTreePage = () => {
         </div>
       </div>
 
-      <div className="info-section">
-        <h3>О данной реализации</h3>
-        <p>
-          Этот пример использует пакет <strong>react-family-tree</strong>, который предоставляет другой подход 
-          к отображению генеалогических деревьев по сравнению с react-d3-tree. Он обрабатывает сложные семейные отношения 
-          включая супругов, множественные браки и обеспечивает лучшую поддержку неиерархических семейных структур.
-        </p>
-        <ul>
-          <li>Поддерживает сложные семейные отношения (супруги, братья, сестры и т.д.)</li>
-          <li>Автоматическая компоновка и позиционирование</li>
-          <li>Интерактивный выбор корневого элемента</li>
-          <li>Узлы-заполнители для отсутствующих членов семьи</li>
-        </ul>
       </div>
-    </div>
+    </DemoPage>
   );
 };
 
