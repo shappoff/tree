@@ -1,36 +1,107 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Примеры Генеалогических Деревьев
 
-## Getting Started
+Демонстрационное приложение на **Next.js 15** (React 19, TypeScript), которое показывает **разные способы визуализации генеалогических деревьев** с помощью четырёх библиотек. Проект помогает сравнить подходы и выбрать подходящее решение для своей задачи.
 
-First, run the development server:
+Интерфейс на **русском языке**. В качестве тестовых данных используется семья **Смирновых** (Иван, Мария, Роберт, Дженнифер и др.).
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Структура проекта
+
+```
+/workspace
+├── src/app/
+│   ├── page.tsx                        # Главная — навигация по примерам
+│   ├── layout.tsx                      # Корневой layout (шрифты Geist, lang="ru")
+│   ├── components/
+│   │   └── FamilyTreeComponent.tsx     # Компонент BalkanGraph
+│   ├── balkangraph/page.tsx
+│   ├── react-d3-tree/page.tsx
+│   ├── react-family-tree/page.tsx
+│   └── react-complex-tree/page.tsx
+├── next.config.ts                      # basePath: '/tree' (для GitHub Pages)
+└── .github/workflows/nextjs.yml        # CI/CD → GitHub Pages
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Четыре реализации
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 1. BalkanGraph (`/balkangraph`)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Библиотека:** `@balkangraph/familytree.js`
+- Профессиональная диаграмма с фото, датами рождения, связями супругов (`pids`), родителей (`fid`/`mid`)
+- Зум колёсиком мыши, светлая тема
+- Вынесен в отдельный клиентский компонент `FamilyTreeComponent`
 
-## Learn More
+### 2. React D3 Tree (`/react-d3-tree`)
 
-To learn more about Next.js, take a look at the following resources:
+- **Библиотека:** `react-d3-tree` (на базе D3.js)
+- Иерархическое дерево в формате parent → children
+- Настройки: ориентация, стиль линий, масштаб
+- Кастомные узлы (цвет по полу), сворачивание, drag & zoom
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 3. React Family Tree (`/react-family-tree`)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Библиотека:** `react-family-tree`
+- Граф связей: родители, супруги, братья/сёстры, дети
+- Можно выбрать корневого человека — дерево перестраивается
+- Поддержка placeholder-узлов для отсутствующих родственников
 
-## Deploy on Vercel
+### 4. React Complex Tree (`/react-complex-tree`)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Библиотека:** `react-complex-tree`
+- Скорее **древовидный список**, чем классическая генеалогическая схема
+- Поиск, переименование, раскрытие/сворачивание, навигация с клавиатуры
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Сравнение библиотек
+
+| Библиотека | Сильные стороны | Ограничения |
+|------------|----------------|-------------|
+| **BalkanGraph** | Богатый UI, фото, готовые шаблоны | Коммерческая лицензия |
+| **react-d3-tree** | Гибкая SVG-визуализация | Иерархия parent/child, без супругов «на одном уровне» |
+| **react-family-tree** | Заточен под семейные связи (браки, сиблинги) | Меньше визуальных возможностей |
+| **react-complex-tree** | Удобен для навигации по данным | Не для классической генеалогической схемы |
+
+## Технический стек
+
+| Компонент | Версия |
+|-----------|--------|
+| Next.js | 15.5.6 |
+| React | 19.1.0 |
+| TypeScript | 5.x |
+
+**Зависимости:**
+
+- `@balkangraph/familytree.js` — профессиональные генеалогические диаграммы
+- `react-d3-tree` — интерактивные деревья на D3.js
+- `react-family-tree` — компонент для сложных семейных связей
+- `react-complex-tree` — продвинутый компонент дерева с поиском и редактированием
+
+## Локальный запуск
+
+```bash
+npm install
+npm run dev
+```
+
+Откройте [http://localhost:3000/tree](http://localhost:3000/tree) в браузере.
+
+> Приложение использует `basePath: '/tree'`, поэтому локально страницы доступны по пути `/tree`, а не в корне.
+
+### Другие команды
+
+```bash
+npm run build   # Сборка для продакшена
+npm run start   # Запуск собранного приложения
+```
+
+## Деплой
+
+В `next.config.ts` задан `basePath: '/tree'` — приложение рассчитано на публикацию на **GitHub Pages** (например, `username.github.io/tree`).
+
+GitHub Actions (`.github/workflows/nextjs.yml`) при пуше в ветку `master` автоматически:
+
+1. Устанавливает зависимости
+2. Собирает статический сайт (`next build`)
+3. Деплоит артефакт на GitHub Pages
+
+## Назначение проекта
+
+Проект — **сравнительная площадка (playground)** для выбора библиотеки генеалогических деревьев. Каждая страница демонстрирует одну и ту же семью в разных форматах данных и с разным UX, чтобы можно было оценить возможности и ограничения каждого подхода.
