@@ -1,13 +1,15 @@
 import FamilyTreeView from '@/components/FamilyTreeView';
+import { siteConfig } from '@/config/site';
+import { familyTreeData } from '@/data/familyTreeData';
 
 export default function HomePage() {
   return (
     <main className="page">
       <header className="page-header">
-        <h1>Генеалогическое дерево</h1>
-        <p>Семья Петровых — демонстрация библиотеки famtreejs</p>
+        <h1>{siteConfig.title}</h1>
+        <p>{siteConfig.subtitle}</p>
       </header>
-      <FamilyTreeView />
+      <FamilyTreeView data={familyTreeData} />
     </main>
   );
 }

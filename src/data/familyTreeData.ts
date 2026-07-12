@@ -1,4 +1,7 @@
-export const familyTreeData = {
+import type { FamilyTreeData } from '@alexbrand09/famtreejs';
+import type { PersonData } from '@/types/person';
+
+export const familyTreeData: FamilyTreeData<PersonData> = {
   people: [
     { id: 'gf', data: { name: 'Пётр Иванов', years: '1910–1985' } },
     { id: 'gm', data: { name: 'Анна Иванова', years: '1915–1990' } },
@@ -10,9 +13,9 @@ export const familyTreeData = {
     { id: 'gc1', data: { name: 'Дмитрий Петров', years: '2000–' } },
   ],
   partnerships: [
-    { id: 'u1', partnerIds: ['gf', 'gm'] as [string, string], childIds: ['f'] },
-    { id: 'u2', partnerIds: ['f', 'm'] as [string, string], childIds: ['c1', 'c2'] },
-    { id: 'u3', partnerIds: ['c1', 'c1w'] as [string, string], childIds: ['gc1'] },
+    { id: 'u1', partnerIds: ['gf', 'gm'], childIds: ['f'] },
+    { id: 'u2', partnerIds: ['f', 'm'], childIds: ['c1', 'c2'] },
+    { id: 'u3', partnerIds: ['c1', 'c1w'], childIds: ['gc1'] },
   ],
   rootPersonId: 'f',
 };
