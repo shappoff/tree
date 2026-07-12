@@ -10,7 +10,6 @@
   --text: #1a1a1a;
   --muted: #5c5c5c;
   --accent: #2d6a4f;
-  --accent-light: #d8f3dc;
   --border: #e2ddd6;
   --shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
   font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
@@ -32,258 +31,43 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  color: var(--accent);
-  text-decoration: none;
-}
-
-.app-shell {
-  display: grid;
-  grid-template-columns: 280px 1fr;
-  min-height: 100vh;
-}
-
-.sidebar {
-  background: var(--surface);
-  border-right: 1px solid var(--border);
-  padding: 1.25rem 1rem;
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  overflow-y: auto;
-}
-
-.sidebar h1 {
-  font-size: 1.1rem;
-  margin: 0 0 0.25rem;
-  color: var(--accent);
-}
-
-.sidebar .subtitle {
-  font-size: 0.8rem;
-  color: var(--muted);
-  margin-bottom: 1.25rem;
-}
-
-.nav-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-}
-
-.nav-list a {
-  display: block;
-  padding: 0.5rem 0.75rem;
-  border-radius: 8px;
-  text-decoration: none;
-  color: var(--text);
-  font-size: 0.9rem;
-  transition: background 0.15s;
-}
-
-.nav-list a:hover {
-  background: var(--accent-light);
-}
-
-.nav-list a.active {
-  background: var(--accent);
-  color: #fff;
-}
-
-.main {
-  padding: 1.5rem 2rem 3rem;
+.page {
   max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem 2rem 3rem;
 }
 
 .page-header {
   margin-bottom: 1.5rem;
 }
 
-.page-header h2 {
+.page-header h1 {
   margin: 0 0 0.5rem;
   font-size: 1.75rem;
+  color: var(--accent);
 }
 
 .page-header p {
   margin: 0;
   color: var(--muted);
-  max-width: 70ch;
 }
 
-.meta-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 0.75rem;
-}
-
-.tag {
-  font-size: 0.75rem;
-  padding: 0.2rem 0.6rem;
-  border-radius: 999px;
-  background: var(--accent-light);
-  color: var(--accent);
-}
-
-.demo-canvas {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  box-shadow: var(--shadow);
-  min-height: 520px;
-  overflow: hidden;
-  position: relative;
-}
-
-.demo-canvas.full {
+.tree-canvas {
   width: 100%;
   height: 560px;
-}
-
-.info-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  margin-top: 1.5rem;
-}
-
-.info-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 1rem 1.25rem;
-}
-
-.info-card h3 {
-  margin: 0 0 0.5rem;
-  font-size: 0.95rem;
-}
-
-.info-card ul {
-  margin: 0;
-  padding-left: 1.2rem;
-  font-size: 0.9rem;
-  color: var(--muted);
-}
-
-.links-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-top: 1rem;
-}
-
-.links-row a {
-  font-size: 0.9rem;
-}
-
-.home-hero {
-  margin-bottom: 2rem;
-}
-
-.home-hero h2 {
-  font-size: 2rem;
-  margin: 0 0 0.75rem;
-}
-
-.cards-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1rem;
-}
-
-.demo-card {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 12px;
-  padding: 1.25rem;
-  text-decoration: none;
-  color: inherit;
-  transition: transform 0.15s, box-shadow 0.15s;
-  display: block;
-}
-
-.demo-card:hover {
-  transform: translateY(-2px);
   box-shadow: var(--shadow);
-}
-
-.demo-card h3 {
-  margin: 0 0 0.5rem;
-  color: var(--accent);
-}
-
-.demo-card p {
-  margin: 0;
-  font-size: 0.9rem;
-  color: var(--muted);
-}
-
-.comparison-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 2rem;
-  font-size: 0.85rem;
-  background: var(--surface);
-  border-radius: 10px;
   overflow: hidden;
-  border: 1px solid var(--border);
-}
-
-.comparison-table th,
-.comparison-table td {
-  padding: 0.6rem 0.75rem;
-  text-align: left;
-  border-bottom: 1px solid var(--border);
-}
-
-.comparison-table th {
-  background: var(--accent-light);
-  font-weight: 600;
-}
-
-.dtree-container .node {
-  background: #d8f3dc;
-  border: 1px solid #2d6a4f;
-  border-radius: 4px;
-  padding: 4px 8px;
-}
-
-.dtree-container .nodeText {
-  font: 12px sans-serif;
-}
-
-.dtree-container .linage,
-.dtree-container .marriage {
-  fill: none;
-  stroke: #40916c;
-  stroke-width: 1.5px;
-}
-
-.dtree-container .marriageNode {
-  fill: #2d6a4f;
 }
 
 @media (max-width: 900px) {
-  .app-shell {
-    grid-template-columns: 1fr;
-  }
-
-  .sidebar {
-    position: static;
-    height: auto;
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .info-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .main {
+  .page {
     padding: 1rem;
+  }
+
+  .tree-canvas {
+    height: 480px;
   }
 }
