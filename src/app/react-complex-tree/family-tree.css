@@ -1,0 +1,327 @@
+.family-tree-page {
+  padding: 20px;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.controls {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+}
+
+.controls h1 {
+  color: #333;
+  margin: 0;
+  flex-basis: 100%;
+  font-size: 24px;
+}
+
+.tree-container {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* React Complex Tree Custom Styling */
+.rct-tree-container {
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.rct-tree-item {
+  padding: 4px 0;
+  border-radius: 4px;
+  margin: 2px 0;
+}
+
+.rct-tree-item:hover {
+  background-color: #f0f0f0;
+}
+
+.rct-tree-item-selected {
+  background-color: #e3f2fd;
+  border: 1px solid #2196f3;
+}
+
+.rct-tree-item-focused {
+  background-color: #fff3e0;
+  border: 1px solid #ff9800;
+}
+
+.rct-tree-item-renaming {
+  background-color: #f5f5f5;
+}
+
+.rct-tree-item-title {
+  display: flex;
+  align-items: center;
+  padding: 4px 8px;
+  min-height: 32px;
+}
+
+.rct-tree-item-arrow {
+  margin-right: 4px;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.rct-tree-item-arrow:before {
+  content: '▶';
+  font-size: 12px;
+  transition: transform 0.2s ease;
+}
+
+.rct-tree-item-arrow-expanded:before {
+  transform: rotate(90deg);
+}
+
+/* Custom family tree item styling */
+.family-tree-item {
+  display: flex;
+  flex-direction: column;
+  min-height: 40px;
+  justify-content: center;
+}
+
+.family-tree-item-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.family-tree-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid #333;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.family-tree-icon.male {
+  background-color: #4A90E2;
+}
+
+.family-tree-icon.female {
+  background-color: #E24A90;
+}
+
+.family-tree-icon.unknown {
+  background-color: #808080;
+}
+
+.family-tree-icon.male:after {
+  content: '♂';
+  color: white;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.family-tree-icon.female:after {
+  content: '♀';
+  color: white;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.family-tree-name {
+  font-weight: 600;
+  color: #333;
+  font-size: 14px;
+}
+
+.family-tree-subtitle {
+  font-size: 12px;
+  color: #666;
+  margin-left: 32px;
+  margin-top: 2px;
+  line-height: 1.2;
+}
+
+/* Search input styling */
+.rct-search-container {
+  padding: 8px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.rct-search-input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.rct-search-input:focus {
+  outline: none;
+  border-color: #2196f3;
+  box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.2);
+}
+
+/* Rename input styling */
+.rct-tree-item-input {
+  width: 100%;
+  padding: 4px 8px;
+  border: 1px solid #2196f3;
+  border-radius: 4px;
+  font-size: 14px;
+  background: white;
+}
+
+.rct-tree-item-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.2);
+}
+
+/* Legend styling */
+.legend {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+}
+
+.legend h3 {
+  margin: 0 0 10px 0;
+  color: #333;
+  font-size: 16px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.legend-circle {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid #333;
+}
+
+.legend-circle.male {
+  background-color: #4A90E2;
+}
+
+.legend-circle.female {
+  background-color: #E24A90;
+}
+
+.legend-circle.unknown {
+  background-color: #808080;
+}
+
+/* Info section styling */
+.info-section {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.info-section h3 {
+  color: #333;
+  margin: 0 0 15px 0;
+  font-size: 18px;
+}
+
+.info-section p {
+  color: #666;
+  line-height: 1.6;
+  margin: 0 0 15px 0;
+}
+
+.info-section ul {
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+  padding-left: 20px;
+}
+
+.info-section li {
+  margin-bottom: 5px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .family-tree-page {
+    padding: 10px;
+  }
+  
+  .controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .legend {
+    position: relative;
+    top: auto;
+    right: auto;
+    margin-top: 20px;
+  }
+  
+  .tree-container {
+    height: 60vh;
+  }
+
+  .family-tree-item-header {
+    gap: 6px;
+  }
+
+  .family-tree-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .family-tree-name {
+    font-size: 13px;
+  }
+
+  .family-tree-subtitle {
+    font-size: 11px;
+    margin-left: 28px;
+  }
+}
+
+/* Accessibility improvements */
+.rct-tree-container:focus-within {
+  outline: 2px solid #2196f3;
+  outline-offset: 2px;
+}
+
+.rct-tree-item-arrow:focus {
+  outline: 2px solid #2196f3;
+  outline-offset: 1px;
+}
+
+/* Animation for smooth transitions */
+.rct-tree-item {
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.rct-tree-item-arrow:before {
+  transition: transform 0.2s ease;
+}

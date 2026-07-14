@@ -1,0 +1,200 @@
+.family-tree-page {
+  padding: 20px;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.controls {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+}
+
+.controls h1 {
+  color: #333;
+  margin: 0;
+  flex-basis: 100%;
+  font-size: 24px;
+}
+
+.controls > div:first-child {
+  flex-basis: 100%;
+  margin-bottom: 20px;
+}
+
+.control-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.control-group label {
+  font-weight: 600;
+  color: #555;
+  min-width: 100px;
+}
+
+.control-group select,
+.control-group input {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.control-group input[type="range"] {
+  width: 150px;
+}
+
+.tree-container {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+#treeWrapper {
+  border: 1px solid #e0e0e0;
+}
+
+/* Tree styling */
+.node__root > circle {
+  fill: #ff6b6b;
+  stroke: #ff5252;
+  stroke-width: 3;
+}
+
+.node__branch > circle {
+  fill: #4ecdc4;
+  stroke: #26a69a;
+  stroke-width: 2;
+}
+
+.node__leaf > circle {
+  fill: #45b7d1;
+  stroke: #2196f3;
+  stroke-width: 2;
+}
+
+/* Custom node styling */
+.node__root,
+.node__branch,
+.node__leaf {
+  cursor: pointer;
+}
+
+.node__root:hover > circle,
+.node__branch:hover > circle,
+.node__leaf:hover > circle {
+  stroke-width: 4;
+  filter: brightness(1.1);
+}
+
+/* Link styling */
+.link {
+  fill: none;
+  stroke: #999;
+  stroke-width: 2;
+}
+
+.link:hover {
+  stroke: #666;
+  stroke-width: 3;
+}
+
+/* Legend styling */
+.legend {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+}
+
+.legend h3 {
+  margin: 0 0 10px 0;
+  color: #333;
+  font-size: 16px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.legend-circle {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid #333;
+}
+
+.legend-circle.male {
+  background-color: #4A90E2;
+}
+
+.legend-circle.female {
+  background-color: #E24A90;
+}
+
+.legend-circle.unknown {
+  background-color: #808080;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .family-tree-page {
+    padding: 10px;
+  }
+  
+  .controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .control-group {
+    justify-content: space-between;
+  }
+  
+  .legend {
+    position: relative;
+    top: auto;
+    right: auto;
+    margin-top: 20px;
+  }
+  
+  #treeWrapper {
+    height: 60vh;
+  }
+}
+
+/* SVG text styling for better readability */
+svg text {
+  user-select: none;
+}
+
+/* Tooltip-like behavior for nodes */
+.node__root text,
+.node__branch text,
+.node__leaf text {
+  pointer-events: none;
+}
+
+/* Animation for smooth transitions */
+.node__root,
+.node__branch,
+.node__leaf {
+  transition: all 0.2s ease-in-out;
+}
