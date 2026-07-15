@@ -8,8 +8,10 @@
 
 ```
 src/
-├── app/                 # Next.js App Router (главный роут = дерево)
-├── components/          # AppShell, FamilyTreeView
+├── app/                 # Next.js App Router
+│   ├── (site)/          # Главная страница
+│   └── view/            # Полноэкранное дерево
+├── components/          # AppShell, FamilyTreeView, HomeButton
 └── data/                # familyTree.ts
 ```
 
@@ -20,7 +22,8 @@ npm install
 npm run dev
 ```
 
-Откройте [http://localhost:3000/tree](http://localhost:3000/tree).
+- Главная: [http://localhost:3000/tree](http://localhost:3000/tree)
+- Дерево: [http://localhost:3000/tree/view](http://localhost:3000/tree/view)
 
 > `basePath: '/tree'` — пути локально и на GitHub Pages начинаются с `/tree`.
 

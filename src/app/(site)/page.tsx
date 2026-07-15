@@ -1,5 +1,4 @@
-import FamilyTreeView from '@/components/FamilyTreeView';
-import { familyTreeData } from '@/data/familyTree';
+import Link from 'next/link';
 
 export default function HomePage() {
   return (
@@ -17,9 +16,11 @@ export default function HomePage() {
         </div>
       </header>
 
-      <div className="demo-canvas full">
-        <FamilyTreeView data={familyTreeData} />
-      </div>
+      <p className="page-cta">
+        <Link href="/view" className="cta-button">
+          Открыть дерево
+        </Link>
+      </p>
 
       <div className="links-row">
         <a
